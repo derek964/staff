@@ -12,10 +12,11 @@ def index(request):
         userinfo = auth.authenticate(username=username, password=password)
         if userinfo:
             auth.login(request, userinfo)
-            request.session['username'] = username
-            return HttpResponseRedirect('/stuinfo/')
-        else:
-            return HttpResponseRedirect('/tchinfo/')
+            stuinfo = student.objects.filter(username=username)
+            if stuinfo:
+                return HttpResponseRedirect('/stuinfo')
+            else:
+                return HttpResponseRedirect('/tchinfo')
     return render(request, 'index.html')
 
 @login_required
@@ -35,5 +36,17 @@ def mopasswd(request):
     return render(request, 'mopasswd.html')
 
 def logout(request):
-    auth.logout()
+    auth.logout(request)
     return HttpResponseRedirect('/')
+
+@login_required
+def tchinfo(request):
+    return render(request, 'tchinfo.html')
+
+@login_required
+def editscore(request):
+    return render(request, 'editscore.html')
+
+@login_required
+def motchpasswd(request):
+    return render(request, 'motchpasswd.html')
