@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^selcourse/', selcourse),
     url(r'^queryscore/', queryscore),
     url(r'^mopasswd/', mopasswd),
+    url(r'^logout/', logout),
 ]
