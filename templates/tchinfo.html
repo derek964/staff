@@ -1,5 +1,24 @@
 {% extends 'BASE03.html' %}
 
 {% block content %}
-   tchinfo
+   <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th style="width: 7%">教师号</th>
+            <th style="width:20%;">姓名</th>
+            <th>用户名</th>
+            <th>职称</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in userinfo %}
+            <tr>
+                <td>{{ i.tno }}</td>
+                <td>{{ i.tname }}</td>
+                <td>{{ i.username }}</td>
+                <td>{{ i.ttitle }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

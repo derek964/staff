@@ -1,5 +1,59 @@
 {% extends 'BASE02.html' %}
-
 {% block content %}
-   stuinfo
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th style="width: 7%">学号</th>
+            <th style="width:20%;">姓名</th>
+            <th>用户名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>班级</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in userinfo %}
+            <tr>
+                <td>{{ i.sno }}</td>
+                <td>{{ i.sname }}</td>
+                <td>{{ i.username }}</td>
+                <td>{{ i.ssex }}</td>
+                <td>{{ i.sage }}</td>
+                <td>{{ i.sdept }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {# <增加已选课程的面板></增加已选课程的面板>#}
+    <div class="king-panel8 m15">
+        <div class="king-panel8-header">
+            <h3 class="king-panel8-title king-info">已选课程</h3>
+        </div>
+        <div class="king-panel8-content pt25">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>课程ID</th>
+                    <th>课程名称</th>
+                    <th>学分</th>
+                    <th>上课时间</th>
+                    <th>上课地点</th>
+                    <th>授课老师</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for j in selcourse %}
+                    <tr>
+                        <td>{{ j.score__cno }}</td>
+                        <td>{{ j.score__cno__cname }}</td>
+                        <td>{{ j.score__cno__ccredit }}</td>
+                        <td>{{ j.score__cno__ctime }}</td>
+                        <td>{{ j.score__cno__cplace}}</td>
+                        <td>{{ j.score__cno__tno_id__tname }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

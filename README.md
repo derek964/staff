@@ -39,3 +39,7 @@
 3）创建课程与授课老师
 
 增加用户：testuser，密码：derek@123
+
+注意:
+1、html中form里的表格名称不要用id，用name（修改密码的页面时时需要修改代码）
+2、在获取用户用户名的时候，不用username = request.session['username']，而是用了username = request.user

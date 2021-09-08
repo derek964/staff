@@ -7,9 +7,11 @@ urlpatterns = [
     url(r'^stuinfo', stuinfo),
     url(r'^tchinfo', tchinfo),
     url(r'^editscore', editscore),
-    url(r'^motchpasswd', motchpasswd),
-    url(r'^selcourse', selcourse),
+    # url(r'^motchpasswd', motchpasswd),
+    url(r'^selcourse/', selcourse),
+    url(r'^delcourse/', delcourse),
     url(r'^queryscore', queryscore),
-    url(r'^mopasswd', mopasswd),
+    # url(r'^mopasswd', mopasswd),
     url(r'^logout', logout),
+    url(r'^changepassword/', changepassword)
 ]

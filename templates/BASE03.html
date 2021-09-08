@@ -80,7 +80,7 @@ left: 0;z-index:999;width: 100%;height: 45px;" class="navbar king-horizontal-nav
                                     <ul id="demo" class="collapse"> </ul>
                                 </li>
                                 <li {% if request.path == "/motchpasswd/" %} class="active" {% endif %}>
-                                    <a href="/motchpasswd/"> <i class="fa fa-ellipsis-h ">                            </i>
+                                    <a href="/changepassword/"> <i class="fa fa-ellipsis-h ">                            </i>
                                         <span>修改密码</span> <i class="fa fa-fw "></i> </a>
                                     <ul id="demo" class="collapse"> </ul>
                                 </li>
@@ -105,22 +105,7 @@ left: 0;z-index:999;width: 100%;height: 45px;" class="navbar king-horizontal-nav
             <!-- content end -->
         </div>
     </div>
-    <script>
-        $(function(){
-           var li = $('.navbar-nav li');
-           li.each(function(){
-           $(this).click(function(){
-             if( $(this).hasClass('opens')){
-               $(this).find('ul').slideUp(350);
-               $(this).removeClass('opens');
-             }else{
-               $(this).find('ul').slideDown(350);
-               $(this).addClass('opens');
-                }
-             })
-            });
-        })
-    </script>
+
 </body>
 
 </html>

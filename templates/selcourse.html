@@ -1,5 +1,35 @@
 {% extends 'BASE02.html' %}
 
 {% block content %}
-   selcourse
+    <table class="table table-bordered table7_demo">
+        <thead>
+        <tr>
+            <th>课程ID</th>
+            <th>课程名称</th>
+            <th>学分</th>
+            <th>上课时间</th>
+            <th>上课地点</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            {% for i in courseinfo %}
+            <td>{{ i.cno }}</td>
+            <td>{{ i.cname }}</td>
+            <td>{{ i.ccredit }}</td>
+            <td>{{ i.ctime }}</td>
+            <td>{{ i.cplace }}</td>
+            <td>
+                <button class="btn btn-xs btn-success" title="激活" onclick="addcourse('{{ i.cno }}',)">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <button class="btn btn-xs btn-danger" title="删除" onclick="delcourse('{{ i.cno}}',)">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
