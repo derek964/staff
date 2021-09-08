@@ -1,3 +1,4 @@
+//修改密码的函数
 function changepassword() {
     if ($('#oldpassword').val() == '' || $('#newpassword1').val() == '' || $('#newpassword2').val() == '') {
         $("#newpasswordinfo").text("密码不能为空！");
@@ -49,3 +50,42 @@ function addcourse(cno) {
             }
         }, 'json')
 }
+
+
+//editscore的函数
+function editscore(cno,sno,cscore){
+    var d = dialog({
+            width: 360,
+            title: '成绩录入',
+            quickClose: true,
+            content: '<label class="col-sm-3 control-label bk-lh30 pt0">成绩：</label>' +
+                '<div class="col-sm-9">' +
+                '<input type="text" class="form-control bk-valign-top" id="scored" placeholder=""> ' +
+                '</div>',
+            ok: function() {
+                    $.post('/editscore/', {
+                    'cno': cno,
+                    'sno': sno,
+                    'cscore': $('#scored').val(),
+                }, function (res) {
+                    if (res.result == 'True') {
+                        alert("修改成功");
+                        window.location.reload();
+                    } else {
+                        alert("修改失败");
+                        window.location.reload();
+                    }
+                }, 'json')
+            },
+            cancelValue: '取消',
+            cancel: function() {
+                console.log(this)
+                // do something
+            },
+            onshow: function() {
+                $('#scored').val(cscore);
+                // do something
+            }
+        });
+        d.show();
+    }

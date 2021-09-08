@@ -2,6 +2,9 @@
 
 {% block content %}
    <table class="table table-bordered">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/artDialog-6.0.4/css/ui-dialog.css" rel="stylesheet">
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/artDialog-6.0.4/dist/dialog-min.js"></script>
+
         <thead>
         <tr>
             <th style="width:10%;">课程ID</th>
@@ -23,9 +26,11 @@
                 <td>{{ i.course__score__sno_id__sdept }}</td>
                 <td>{{ i.course__score__cscore }}</td>
                 <td>
-                    <button class="btn btn-xs btn-warning" title="编辑">
+                    <button class="btn btn-xs btn-warning" title="编辑" onclick="editscore('{{ i.course__cno }}',
+                            '{{ i.course__score__sno }}', '{{ i.course__score__cscore }}',)">
                         <i class="glyphicon glyphicon-edit"></i>
                     </button>
+
                 </td>
             </tr>
         {% endfor %}

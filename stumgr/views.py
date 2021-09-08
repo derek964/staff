@@ -130,6 +130,14 @@ def tchinfo(request):
 @login_required
 @permission_required('stumgr.change_teacher')
 def editscore(request):
+    if request.method=='POST' and request.POST:
+        cno = request.POST['cno']
+        sno = request.POST['sno']
+        cscore = request.POST['cscore']
+        print(cscore)
+        score.objects.filter(cno_id=cno, sno_id=sno).update(cscore=cscore)
+        result = 'True'
+        return JsonResponse({'result': result})
     username = request.user
     scored = teacher.objects.filter(username=username).values('course__cno', 'course__cname', 'course__score__sno',
                                                             'course__score__sno', 'course__score__sno_id__username',
