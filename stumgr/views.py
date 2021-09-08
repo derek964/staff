@@ -78,7 +78,9 @@ def delcourse(request):
 @login_required
 @permission_required('stumgr.change_student')
 def queryscore(request):
-    return render(request, 'queryscore.html')
+    username = request.user
+    score = student.objects.filter(username=username).values('score__cno', 'score__cno__cname', 'score__cscore')
+    return render(request, 'queryscore.html', context=locals())
 
 @login_required
 @permission_required('stumgr.change_student')
@@ -128,7 +130,11 @@ def tchinfo(request):
 @login_required
 @permission_required('stumgr.change_teacher')
 def editscore(request):
-    return render(request, 'editscore.html')
+    username = request.user
+    scored = teacher.objects.filter(username=username).values('course__cno', 'course__cname', 'course__score__sno',
+                                                            'course__score__sno', 'course__score__sno_id__username',
+                                                            'course__score__sno_id__sdept', 'course__score__cscore')
+    return render(request, 'editscore.html', context=locals())
 
 # @login_required
 # @permission_required('stumgr.change_teacher')

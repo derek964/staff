@@ -1,5 +1,22 @@
 {% extends 'BASE02.html' %}
 
 {% block content %}
-   queryscore
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th style="width: 7%">课程ID</th>
+            <th style="width:20%;">课程名</th>
+            <th>成绩</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in score %}
+            <tr>
+                <td>{{ i.score__cno }}</td>
+                <td>{{ i.score__cno__cname }}</td>
+                <td>{{ i.score__cscore }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

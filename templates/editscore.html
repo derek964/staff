@@ -1,5 +1,34 @@
 {% extends 'BASE03.html' %}
 
 {% block content %}
-   editscore
+   <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th style="width:10%;">课程ID</th>
+            <th style="width:16%;">课程名</th>
+            <th style="width:16%;">学号</th>
+            <th style="width:16%;">姓名</th>
+            <th style="width:16%;">班级</th>
+            <th style="width:16%;">成绩</th>
+            <th style="width:10%;">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in scored %}
+            <tr>
+                <td>{{ i.course__cno }}</td>
+                <td>{{ i.course__cname }}</td>
+                <td>{{ i.course__score__sno }}</td>
+                <td>{{ i.course__score__sno_id__username }}</td>
+                <td>{{ i.course__score__sno_id__sdept }}</td>
+                <td>{{ i.course__score__cscore }}</td>
+                <td>
+                    <button class="btn btn-xs btn-warning" title="编辑">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
