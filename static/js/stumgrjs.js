@@ -1,4 +1,4 @@
-//修改密码的函数
+//修改学生密码的函数
 function changepassword() {
     if ($('#oldpassword').val() == '' || $('#newpassword1').val() == '' || $('#newpassword2').val() == '') {
         $("#newpasswordinfo").text("密码不能为空！");
@@ -11,9 +11,36 @@ function changepassword() {
             'newpassword2': $('#newpassword2').val(),
         }, function (res) {
             if(res.result){
-                alert("修改成功！");
+                console.log("aaa");
+                alert("修改成功111！");
                 window.location.reload();
             }else{
+                console.log("bbb");
+                alert("旧密码不正确，请重新输入！");
+                window.location.reload();
+            }
+        }, 'json')
+    }
+};
+
+//修改老师密码的函数
+function changetchpassword() {
+    if ($('#oldpassword').val() == '' || $('#newpassword1').val() == '' || $('#newpassword2').val() == '') {
+        $("#newpasswordinfo").text("密码不能为空！");
+    } else if ($('#newpassword1').val() != $('#newpassword2').val()) {
+        $("#newpasswordinfo").text("两次输入的新密码不一致！");
+    } else {
+        $.post('/changetchpassword/', {
+            'oldpassword': $('#oldpassword').val(),
+            'newpassword1': $('#newpassword1').val(),
+            'newpassword2': $('#newpassword2').val(),
+        }, function (res) {
+            if(res.result){
+                console.log("aaa");
+                alert("修改成功222！");
+                window.location.reload();
+            }else{
+                console.log("bbb");
                 alert("旧密码不正确，请重新输入！");
                 window.location.reload();
             }

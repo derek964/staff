@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^queryscore', queryscore),
     # url(r'^mopasswd', mopasswd),
     url(r'^logout', logout),
-    url(r'^changepassword/', changepassword)
+    url(r'^changepassword/', changepassword),
+    url(r'^changetchpassword/', changetchpassword)
 ]

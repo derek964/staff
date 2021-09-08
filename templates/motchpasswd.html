@@ -1,25 +1,31 @@
 {% extends 'BASE03.html' %}
 
 {% block content %}
-    <form class="form-horizontal" method="POST">{% csrf_token %}
+    <form class="form-horizontal" method="POST">
         <div class="form-group clearfix ">
             <label class="col-sm-3 control-label bk-lh30 pt0">原密码：</label>
             <div class="col-sm-9">
-                <input type="password" class="form-control bk-valign-top" name="oldpassword" placeholder="请输入原始密码"> </div>
+                <input type="password" class="form-control bk-valign-top" name="oldpassword" id="oldpassword"
+                       placeholder="请输入原始密码">
+            </div>
         </div>
         <div class="form-group clearfix ">
             <label class="col-sm-3 control-label bk-lh30 pt0">新密码：</label>
             <div class="col-sm-9">
-                <input type="password" class="form-control bk-valign-top" name="newpassword1" placeholder="请输入新密码"> </div>
+                <input type="password" class="form-control bk-valign-top" name="newpassword1" id="newpassword1"
+                       placeholder="请输入新密码">
+            </div>
         </div>
         <div class="form-group clearfix ">
             <label class="col-sm-3 control-label bk-lh30 pt0">再次输入新密码：</label>
             <div class="col-sm-9">
-                <input type="password" class="form-control bk-valign-top" name="newpassword2" placeholder="请在此输入新密码"> </div>
+                <input type="password" class="form-control bk-valign-top" name="newpassword2" id="newpassword2"
+                       placeholder="请再次输入新密码">
+            </div>
         </div>
         <div class="form-group clearfix">
             <div class="col-sm-9 col-sm-offset-3">
-                <button type="submit" class="king-btn mr10  king-success">提交</button>
+                <button type="submit" class="king-btn mr10  king-success" onclick="changetchpassword()">提交</button>
                 <button type="button" class="king-btn king-default ">取消</button>
             </div>
         </div>

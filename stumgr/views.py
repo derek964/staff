@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from stumgr.models import *
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required, permission_required
+import pdb
 
 # Create your views here.
 def index(request):
@@ -88,7 +89,7 @@ def changepassword(request):
     if request.method == 'POST' and request.POST:
         oldpassword = request.POST['oldpassword']
         newpassword2 = request.POST['newpassword2']
-        username = request.session['username']
+        username = request.user
         userinfo = auth.authenticate(username=username, password=oldpassword)
         if userinfo:
             user = User.objects.get(username=username)
@@ -101,6 +102,28 @@ def changepassword(request):
         else:
             result = False
             return JsonResponse({'result': result})
+    return render(request, 'mopasswd.html', context=locals())
+
+@login_required
+@permission_required('stumgr.change_teacher')
+def changetchpassword(request):
+    if request.method == 'POST' and request.POST:
+        oldpassword = request.POST['oldpassword']
+        newpassword2 = request.POST['newpassword2']
+        username = request.user
+        userinfo = auth.authenticate(username=username, password=oldpassword)
+        if userinfo:
+            user = User.objects.get(username=username)
+            user.set_password(newpassword2)
+            user.save()
+            result = True
+            userinfo = auth.authenticate(username=username, password=newpassword2)
+            auth.login(request, userinfo)
+            return JsonResponse({'result': result})
+        else:
+            result = False
+            return JsonResponse({'result': result})
+    return render(request, 'motchpasswd.html', context=locals())
 #
 # def mopasswd(request):
 #     if request.method == 'POST' and request.POST:
